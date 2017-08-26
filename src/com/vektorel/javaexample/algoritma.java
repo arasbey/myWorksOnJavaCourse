@@ -1,6 +1,7 @@
 package com.vektorel.javaexample;
 
 import java.awt.List;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -12,7 +13,7 @@ public class algoritma {
 		algoritma algoritmalar = new algoritma();
 
 		algoritmalar.deneme();
-		algoritmalar.notlarýBesliktabandayazma();
+		algoritmalar.tcKimlikdogrulama();
 
 	}
 
@@ -286,7 +287,7 @@ public class algoritma {
 
 	}
 
-	private void saatYap() {
+	public void saatYap() {
 		System.out.println("Saati baslýyor");
 		Scanner al = new Scanner(System.in);
 
@@ -303,7 +304,7 @@ public class algoritma {
 
 	}
 
-	private void notlarýBesliktabandayazma() {
+	public void notlarýBesliktabandayazma() {
 		System.out.println("Kac adet not gireceksiniz");
 		Scanner al = new Scanner(System.in);
 		int notSayýsý = al.nextInt();
@@ -313,27 +314,258 @@ public class algoritma {
 		for (int i = 0; i < notSayýsý; i++) {
 			System.out.println("Not Giriniz");
 			notliste.add(al.nextInt());
-			
+
 		}
 		for (Integer t : notliste) {
-			if(t<=45){
-				System.out.println("Girilen "+t+" notu zayýftýr ve not karsýlýgý 1 dir");
-			}
-				else if (t>45 && t<=55){
-					System.out.println("Girilen "+t+" notu vasattýr ve not karsýlýgý 2 dir");
-			}
-				else if(t>55 && t<=69){
-					System.out.println("Girilen "+t+" notu ortadir ve not karsýlýgý 3 dur");
-				}
-				else if(t>69 && t<=84){
-					System.out.println("Girilen "+t+" notu iyidir ve not karsýlýgý 4 tür");
+			if (t <= 45) {
+				System.out.println("Girilen " + t + " notu zayýftýr ve not karsýlýgý 1 dir");
+			} else if (t > 45 && t <= 55) {
+				System.out.println("Girilen " + t + " notu vasattýr ve not karsýlýgý 2 dir");
+			} else if (t > 55 && t <= 69) {
+				System.out.println("Girilen " + t + " notu ortadir ve not karsýlýgý 3 dur");
+			} else if (t > 69 && t <= 84) {
+				System.out.println("Girilen " + t + " notu iyidir ve not karsýlýgý 4 tür");
 
-				}
-				else if(t>84){
-					System.out.println("Girilen "+t+" notu pekiyidir ve not karsýlýgý 5 tir");
+			} else if (t > 84) {
+				System.out.println("Girilen " + t + " notu pekiyidir ve not karsýlýgý 5 tir");
 
-				}
-		}		
+			}
+		}
 	}
+
+	public void ayNumarasý() {
+		Scanner al = new Scanner(System.in);
+		System.out.println("Bir ay numarasý giriniz");
+		int numara = al.nextInt();
+		switch (numara) {
+		case 1:
+			System.out.println("Girdiginiz ay ocaktir");
+			break;
+		case 2:
+			System.out.println("Girdiginiz ay subattir");
+			break;
+		case 3:
+			System.out.println("Girdiginiz ay marttir");
+			break;
+		case 4:
+			System.out.println("Girdiginiz ay nisandir");
+			break;
+		case 5:
+			System.out.println("Girdiginiz ay mayýstýr");
+			break;
+		case 6:
+			System.out.println("Girdiginiz ay hazirandir");
+			break;
+		case 7:
+			System.out.println("Girdiginiz ay temmuzdur");
+			break;
+		case 8:
+			System.out.println("Girdiginiz ay agustostur");
+			break;
+		case 9:
+			System.out.println("Girdiginiz ay eylüldür");
+			break;
+		case 10:
+			System.out.println("Girdiginiz ay ekimdir");
+			break;
+		case 11:
+			System.out.println("Girdiginiz ay kasýmdir");
+			break;
+		case 12:
+			System.out.println("Girdiginiz ay aralýktýr");
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+	public void haftanýnKacýncýgunu() {
+		Scanner al = new Scanner(System.in);
+		String[] gunler = { "pazartesi", "salý", "carsamba", "persembe", "cuma", "cumartesi", "pazar" };
+		System.out.println("Bir gün yazýnýz(ör:pazartesi)");
+		String gun = al.nextLine();
+		for (int i = 0; i < gunler.length; i++) {
+			if (gun.equals(gunler[i])) {
+				System.out.println("Haftanýn " + (i + 1) + "inci günü");
+			}
+
+		}
+
+	}
+
+	public void kdvToplamhesabý() {
+		Scanner al = new Scanner(System.in);
+		java.util.List<Double> hamfiyat = new ArrayList<>();
+		java.util.List<Double> kdvler = new ArrayList<>();
+		System.out.println("Mal adedi giriniz");
+		int maladedi = al.nextInt();
+		for (int i = 0; i < maladedi; i++) {
+			System.out.println("Mal fiyati giriniz");
+			hamfiyat.add(al.nextDouble());
+			System.out.println("Mal kdv giriniz");
+			kdvler.add(al.nextDouble());
+
+		}
+		double toplam = 0;
+		for (int i = 0; i < maladedi; i++) {
+			double netfiyat = hamfiyat.get(i) + (hamfiyat.get(i)) * (kdvler.get(i) / 100);
+			System.out.println(+(i + 1) + " inci mal icin toplam mal degeri = " + netfiyat);
+
+			toplam += netfiyat;
+
+		}
+		System.out.println("Toplam fiyat = " + toplam);
+
+	}
+
+	public void sarkýSuresi() {
+		Scanner al = new Scanner(System.in);
+		System.out.println("5 adet sarký süresini dakika olarak giriniz");
+		java.util.List<Integer> sarkýdakika = new ArrayList<>();
+
+		for (int i = 0; i < 5; i++) {
+
+			System.out.println((+i + 1) + " inci sarký icin dakika giriniz");
+			sarkýdakika.add(al.nextInt());
+
+		}
+		double toplamdakika = 0;
+
+		for (Integer t : sarkýdakika) {
+			toplamdakika += t;
+		}
+
+		System.out.println("Girilen sarkýlar toplam " + toplamdakika / 60 + " saat eder");
+
+	}
+
+	public void islemYap() {
+		Scanner al = new Scanner(System.in);
+
+		System.out.println("------------ISLEM MENUSU---------------");
+		System.out.println("+ -----> toplama");
+		System.out.println("- -----> cýkarma");
+		System.out.println("* -----> carpma");
+		System.out.println("/ -----> bolme");
+		System.out.println("---------------------------------------");
+		System.out.println("Lutfen yapmak istediginiz islemi secin");
+		String islem = al.nextLine();
+
+		System.out.println("Islem yapacagýnýz sayýlarý giriniz");
+		System.out.print("Sayý 1 :\n");
+		int sayi1 = al.nextInt();
+		System.out.print("Sayý 2 :\n");
+		int sayi2 = al.nextInt();
+
+		if (islem.equals("+")) {
+			System.out.println(sayi1 + " ile " + sayi2 + " nin toplamý " + (sayi1 + sayi2) + "'dir");
+
+		} else if (islem.equals("-")) {
+			System.out.println(sayi1 + " ile " + sayi2 + " nin farki " + (sayi1 - sayi2) + "'dir");
+
+		} else if (islem.equals("*")) {
+			System.out.println(sayi1 + " ile " + sayi2 + " nin carpýmý " + (sayi1 * sayi2) + "'dir");
+
+		} else if (islem.equals("/")) {
+			System.out.println(sayi1 + " ile " + sayi2 + " nin bolumu " + (sayi1 / sayi2) + "'dir");
+
+		}
+	}
+
+	public void sayýyýYazýyacevir() {
+		Scanner al = new Scanner(System.in);
+		System.out.println("Yazýya cevirilecek sayiyi giriniz");
+		int sayi = al.nextInt();
+
+		int birler = (sayi % 10);
+		int onlar = ((sayi / 10) % 10);
+		int yuzler = ((sayi / 100) % 10);
+		int binler = ((sayi / 1000) % 10);
+		int onBinler = ((sayi / 10000) % 10);
+		int yuzBinler = ((sayi / 100000) % 10);
+		int milyon = ((sayi / 1000000) % 10);
+		int milyar = ((sayi / 10000000) % 10);
+
+		String[] birBas = { "", "Bir", "Ýki", "Üç", "Dört", "Beþ", "Altý", "Yedi", "Sekiz", "Dokuz" };
+		String[] onBas = { "", "On", "Yirmi", "Otuz", "Kýrk", "Elli", "Altmýþ", "Yetmiþ", "Seksen", "Doksan" };
+		String[] yuzBas = { "", "Yüz", "Ýkiyüz", "Üçyüz", "Dörtyüz", "Beþyüz", "Altýyüz", "Yediyüz", "Sekizyüz",
+				"Dokuzyüz" };
+		String[] binBas = { "", "Bin", "Ýkibin", "Üçbin", "Dörtbin", "Beþbin", "Altýbin", "Yedibin", "Sekizbin",
+				"Dokuzbin" };
+		String[] milyonBas = { "", "BirMilyon", "ÝkiMilyon", "ÜçMilyon", "DörtMilyon", "BeþMilyon", "AltýMilyon",
+				"YediMilyon", "SekizMilyon", "DokuzMilyon" };
+		String[] milyarBas = { "", "BirMilyar", "ÝkiMilyar", "UcMilyar", "DortMilyar", "BesMilyar", "AltýMilyar",
+				"YediMilyar", "SekizMilyar", "DokuzMilyar" };
+		System.out.println(milyarBas[milyar] + "" + milyonBas[milyon] + " " + yuzBas[yuzBinler] + " " + onBas[onBinler]
+				+ " " + binBas[binler] + " " + yuzBas[yuzler] + " " + onBas[onlar] + " " + birBas[birler]);
+		System.out.println("");
+
+	}
+
+	public void tcKimlikdogrulama() {
+		Scanner al = new Scanner(System.in);
+
+		String tcno = al.nextLine();
+
+		System.out.println("Girilen " + tcno + " sayýsý dogrulanýyor..");
+
+		int uzunluk = tcno.length();
+
+		if (uzunluk != 11) {
+			System.out.println("Tc Kimlik hatalýdýr");
+		} else {
+			System.out.println("Uzunluk kontrolu basarili!");
+		}
+		boolean sýfýrmý = tcno.startsWith("0");
+		if (sýfýrmý == true) {
+			System.out.println("Tc Kimlik hatalýdýr");
+		} else {
+			System.out.println("Ýlk rakam kontrolu basarili!");
+		}
+
+		int hane[] = new int[11];
+		int sonrakam = 0;
+		for (int i = 0; i < 11; i++) {
+			hane[i] = Integer.parseInt(String.valueOf(tcno.charAt(i)));
+			sonrakam = hane[i];
+		}
+		// System.out.println(hane[2]);
+		// System.out.println(sonrakam);
+		int hatasayacý=0;
+		if (sonrakam % 2 != 0) {
+			System.out.println("Tc kimlik hatalýdýr(son rakamý cift degil)");
+			hatasayacý++;
+
+		} else
+			System.out.println("Son rakam konrtolu basarili!");
+
+		if (((hane[0] + hane[2] + hane[4] + hane[6] + hane[8]) * 7 + (hane[1] + hane[3] + hane[5] + hane[7]) * 9)
+				% 10 != hane[9]) {
+			System.out.println("1.esitlik konrolü basarisiz.Hatalý TC Kimlik numarasý");
+			hatasayacý++;
+		} else {
+			System.out.println("1.esitlik kontrolü basarili!");
+		}
+
+		if (((hane[0] + hane[2] + hane[4] + hane[6] + hane[8]) * 8) % 10 != hane[10]) {
+			System.out.println("2.esitlik kontrolü basarisiz.Hatalý TC Kimlik numarasý");
+			hatasayacý++;
+			
+		} else {
+			System.out.println("2.esitlik kontrolü basarili!");
+		}
+		if(hatasayacý==0){
+			System.out.println("Tebrikler TC Kimlik dogrulandi!");
+		}
+		else{
+			System.out.println(hatasayacý+" tane hata bulunmaktadir,girdiginiz numara gecersizdir.");
+		}
+			
+	}
+
+
+
 
 }
