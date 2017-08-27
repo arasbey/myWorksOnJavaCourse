@@ -1,19 +1,82 @@
 package com.vektorel.javaexample;
 
 import java.awt.List;
+import java.io.IOException;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class algoritma {
 
 	public static void main(String[] args) {
-
 		algoritma algoritmalar = new algoritma();
+		algoritma.kullaniciGirisi();
+	}
 
-		algoritmalar.deneme();
-		algoritmalar.tcKimlikdogrulama();
+	public static void kullaniciGirisi() {
+		algoritma algo = new algoritma();
+		java.util.List<String> kullaniciadilistesi = new ArrayList<String>();
+		java.util.List<String> sifrelistesi = new ArrayList<String>();
+
+		kullaniciadilistesi.add("admin");
+		kullaniciadilistesi.add("user");
+		sifrelistesi.add("admin");
+		sifrelistesi.add("user");
+
+		Scanner al = new Scanner(System.in);
+		String sifre;
+		String giris;
+		int dogrulukkontrol = 0;
+		System.out.println("------------ Hosgeldiniz -------------");
+		System.out.println("Lutfen Kullanici adinizi giriniz.Yoksa,olusturmak icin yeni yazin");
+		giris = al.nextLine();
+		System.out.println("Lutfen sifrenizi giriniz.");
+
+		sifre = al.nextLine();
+		if (giris.equals("yeni") || giris.equals("admin") || giris.equals("user")) {
+			dogrulukkontrol++;
+
+		} else {
+			System.out.println("HATALI GÝRÝS YAPILDI LUTFEN TEKRAR DENEYÝNÝZ");
+
+			kullaniciGirisi();
+		}
+
+		if (giris.equals("yeni")) {
+			System.out.println("Yeni kullanici adi giriniz");
+			kullaniciadilistesi.add(al.nextLine());
+			System.out.println("Sifrenizi olusturun");
+			sifrelistesi.add(al.nextLine());
+			System.out.println("Tebrikler yeni bir kullanici olusturdunuz!Simdi giris yapabilirsiniz.");
+			System.out.println("Kullanici Adinizi giriniz");
+			giris = al.nextLine();
+		}
+
+		if (giris.equals(kullaniciadilistesi.get(0)) && sifre.equals(sifrelistesi.get(0))) {
+			System.out.println("Admin girisi basarili!");
+			System.out.println("Sizin için tüm secenekleri buraya getiriyorum.");
+			System.out.println("*******ADMIN MENUSU**********");
+			
+
+		} else if (giris.equals(kullaniciadilistesi.get(1)) && sifre.equals(sifrelistesi.get(1))) {
+			System.out.println("User girisi basarili!");
+			System.out.println("Sizin icin sadece ilk 10 algoritmayi getiriyorum");
+			System.out.println("******USER MENUSU *********");
+
+		} else if (giris.equals(kullaniciadilistesi.get(2)) && sifre.equals(sifrelistesi.get(2))) {
+			System.out.println("Yeni user girisi basarili!");
+			System.out.println("Sizin icin sadece ilk 3 algoritmayi getiriyorum");
+			System.out.println("*****YENI USER MENUSU*******");
+		}
+
+		else {
+			System.out.println("HATALI GÝRÝS LUTFEN TEKRAR DENEYÝN");
+
+			kullaniciGirisi();
+		}
 
 	}
 
@@ -505,6 +568,7 @@ public class algoritma {
 	}
 
 	public void tcKimlikdogrulama() {
+		System.out.println("Lütfen kontrol icin Tc kimlik no giriniz:");
 		Scanner al = new Scanner(System.in);
 
 		String tcno = al.nextLine();
@@ -533,7 +597,7 @@ public class algoritma {
 		}
 		// System.out.println(hane[2]);
 		// System.out.println(sonrakam);
-		int hatasayacý=0;
+		int hatasayacý = 0;
 		if (sonrakam % 2 != 0) {
 			System.out.println("Tc kimlik hatalýdýr(son rakamý cift degil)");
 			hatasayacý++;
@@ -552,20 +616,57 @@ public class algoritma {
 		if (((hane[0] + hane[2] + hane[4] + hane[6] + hane[8]) * 8) % 10 != hane[10]) {
 			System.out.println("2.esitlik kontrolü basarisiz.Hatalý TC Kimlik numarasý");
 			hatasayacý++;
-			
+
 		} else {
 			System.out.println("2.esitlik kontrolü basarili!");
 		}
-		if(hatasayacý==0){
+		if (hatasayacý == 0) {
 			System.out.println("Tebrikler TC Kimlik dogrulandi!");
+		} else {
+			System.out.println(
+					hatasayacý + " tane hata bulunmaktadir,girdiginiz numara bir tc kimlik numarasi degildir.");
 		}
-		else{
-			System.out.println(hatasayacý+" tane hata bulunmaktadir,girdiginiz numara gecersizdir.");
-		}
-			
+
 	}
 
+	public void ucgenCiz() {
+		Scanner al = new Scanner(System.in);
+		int kenarlar[] = new int[4];
+		int hataoku = 0;
+		for (int i = 1; i <= 3; i++) {
+			System.out.println("Ücgenin " + i + ".kenarini giriniz");
+			kenarlar[i] = al.nextInt();
 
+		}
 
+		if ((kenarlar[1] + kenarlar[2]) > kenarlar[0] && (kenarlar[1] - kenarlar[2]) < kenarlar[0]
+				|| (kenarlar[0] + kenarlar[2]) > kenarlar[1] && (kenarlar[0] - kenarlar[2]) < kenarlar[2]
+				|| (kenarlar[0] + kenarlar[1]) > kenarlar[2] && (kenarlar[0] - kenarlar[1]) < kenarlar[2]) {
+			System.out.println("Bu ucgen cizim kurallarýna uyuyor");
 
+		} else {
+			System.out.println("Bu ucgen cizilemez");
+			hataoku++;
+		}
+
+		if (kenarlar[0] == kenarlar[1] && kenarlar[0] == kenarlar[2] && kenarlar[1] == kenarlar[2]) {
+			System.out.println("Bu bir eskanar ücgendir.");
+		} else if (kenarlar[0] == kenarlar[1] || kenarlar[0] == kenarlar[2] && kenarlar[1] == kenarlar[2]) {
+			System.out.println("Bu bir ikizkenar ücgendir.");
+		} else if (kenarlar[0] != kenarlar[1] && kenarlar[0] != kenarlar[2] && kenarlar[1] != kenarlar[2]) {
+			System.out.println("Bu bir cesitkenar ücgendir");
+
+		} else {
+			System.out.println("Bu ucgen cizilemez");
+			hataoku++;
+
+		}
+		if (hataoku == 0) {
+
+			System.out.println("Cizilen ucgenin cevresi" + (kenarlar[0] + kenarlar[1] + kenarlar[2]));
+			System.out.println("Cizilen ucgenin alaný " + (kenarlar[0] * kenarlar[1] / 2));
+
+		}
+
+	}
 }
