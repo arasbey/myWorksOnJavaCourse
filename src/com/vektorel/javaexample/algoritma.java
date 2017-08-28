@@ -42,7 +42,6 @@ public class algoritma {
 		} else {
 			System.out.println("HATALI GÝRÝS YAPILDI LUTFEN TEKRAR DENEYÝNÝZ");
 
-			kullaniciGirisi();
 		}
 
 		if (giris.equals("yeni")) {
@@ -57,19 +56,21 @@ public class algoritma {
 
 		if (giris.equals(kullaniciadilistesi.get(0)) && sifre.equals(sifrelistesi.get(0))) {
 			System.out.println("Admin girisi basarili!");
-			System.out.println("Sizin için tüm secenekleri buraya getiriyorum.");
+			System.out.println("Sizin için tüm algoritmalari buraya getiriyorum.");
 			System.out.println("*******ADMIN MENUSU**********");
-			
+			algo.secimMenusuadmin();
+		}
 
-		} else if (giris.equals(kullaniciadilistesi.get(1)) && sifre.equals(sifrelistesi.get(1))) {
+		else if (giris.equals(kullaniciadilistesi.get(1)) && sifre.equals(sifrelistesi.get(1))) {
 			System.out.println("User girisi basarili!");
 			System.out.println("Sizin icin sadece ilk 10 algoritmayi getiriyorum");
 			System.out.println("******USER MENUSU *********");
-
+			algo.secimMenusuuser();
 		} else if (giris.equals(kullaniciadilistesi.get(2)) && sifre.equals(sifrelistesi.get(2))) {
 			System.out.println("Yeni user girisi basarili!");
 			System.out.println("Sizin icin sadece ilk 3 algoritmayi getiriyorum");
 			System.out.println("*****YENI USER MENUSU*******");
+			algo.secimMenusuyeniuser();
 		}
 
 		else {
@@ -78,6 +79,250 @@ public class algoritma {
 			kullaniciGirisi();
 		}
 
+	}
+
+	public void secimMenusuadmin() {
+		algoritma algo = new algoritma();
+		Scanner al = new Scanner(System.in);
+		System.out.println("Lutfen secimizi Belirtin!");
+		int secim = 0;
+		System.out.println("Deneme Algoritmasi icin 1'i giriniz.");
+		System.out.println("Not ortalamasi Algoritmasi icin 2'i giriniz.");
+		System.out.println("Not siralamasi Algoritmasi icin 3'ü giriniz.");
+		System.out.println("Ondan büyük mü Algoritmasi icin 4'ü giriniz.");
+		System.out.println("Ýki katini al Algoritmasi icin 5'i giriniz.");
+		System.out.println("Rasgele yas bulma Algoritmasi icin 6'i giriniz.");
+		System.out.println("Tek tek yas bulma Algoritmasi icin 7'i giriniz.");
+		System.out.println("Kare alma Algoritmasi icin 8'i giriniz.");
+		System.out.println("Yüzdeli not hesabi Algoritmasi icin 9'u giriniz.");
+		System.out.println("Bir sayi 10 carpým Algoritmasi icin 10'u giriniz.");
+		System.out.println("Besten büyük mü Algoritmasi icin 11'i giriniz.");
+		System.out.println("Mal komisyonu Algoritmasi icin 12'i giriniz.");
+		System.out.println("Cember hesaplma Algoritmasi icin 13'ü giriniz.");
+		System.out.println("Not büyük kücük Algoritmasi icin 14'ü giriniz.");
+		System.out.println("Saat yapma Algoritmasi icin 15'i giriniz.");
+		System.out.println("Beslik taban notlari Algoritmasi icin 16'i giriniz.");
+		System.out.println("Ay numarasi Algoritmasi icin 17'i giriniz.");
+		System.out.println("Hafta günü Algoritmasi icin 18'i giriniz.");
+		System.out.println("Kdv hesabi Algoritmasi icin 19'u giriniz.");
+		System.out.println("Sarki süresi Algoritmasi icin 20'i giriniz.");
+		System.out.println("Ýslem yapma Algoritmasi icin 21'i giriniz.");
+		System.out.println("Sayiyi yaziya cevirme Algoritmasi icin 22'i giriniz.");
+		System.out.println("Tc kimlik dogrulama Algoritmasi icin 23'ü giriniz.");
+		System.out.println("Ucgen cizme Algoritmasi icin 24'ü giriniz.");
+		System.out.println("Cikmak icin 0 giriniz.");
+		secim = al.nextInt();
+		switch (secim) {
+		case 1:
+			algo.deneme();
+			secimMenusuadmin();
+			break;
+		case 2:
+			algo.notOrtalama();
+			secimMenusuadmin();
+			;
+			break;
+		case 3:
+			algo.notSýrala();
+			secimMenusuadmin();
+			;
+			break;
+		case 4:
+			algo.ondanBuyukmu();
+			secimMenusuadmin();
+			break;
+		case 5:
+			algo.ikikatiniAl();
+			secimMenusuadmin();
+			break;
+		case 6:
+			algo.randomYaslarýbul();
+			secimMenusuadmin();
+			break;
+		case 7:
+			algo.ayrýayrýRandombul();
+			secimMenusuadmin();
+			break;
+		case 8:
+			algo.kareleriniAl();
+			;
+			secimMenusuadmin();
+			break;
+		case 9:
+			algo.notYuzdeli();
+			secimMenusuadmin();
+			break;
+		case 10:
+			algo.birsayýOncarpým();
+			secimMenusuadmin();
+			break;
+		case 11:
+			algo.bestenBuyukmu();
+			secimMenusuadmin();
+			break;
+		case 12:
+			algo.malKomisyon();
+			secimMenusuadmin();
+			break;
+		case 13:
+			algo.cemberHesabý();
+			secimMenusuadmin();
+			break;
+		case 14:
+			algo.notBuyukkucuk();
+			secimMenusuadmin();
+			break;
+		case 15:
+			algo.saatYap();
+			secimMenusuadmin();
+			break;
+		case 16:
+			algo.notlarýBesliktabandayazma();
+			secimMenusuadmin();
+			break;
+		case 17:
+			algo.ayNumarasý();
+			secimMenusuadmin();
+			break;
+		case 18:
+			algo.haftanýnKacýncýgunu();
+			secimMenusuadmin();
+			break;
+		case 19:
+			algo.kdvToplamhesabý();
+			secimMenusuadmin();
+			break;
+		case 20:
+			algo.sarkýSuresi();
+			secimMenusuadmin();
+			break;
+		case 21:
+			algo.islemYap();
+			secimMenusuadmin();
+			break;
+		case 22:
+			algo.sayýyýYazýyacevir();
+			secimMenusuadmin();
+			break;
+		case 23:
+			algo.tcKimlikdogrulama();
+			secimMenusuadmin();
+			break;
+		case 24:
+			algo.ucgenCiz();
+			secimMenusuadmin();
+			break;
+		case 0:
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+	public void secimMenusuuser() {
+		algoritma algo = new algoritma();
+		Scanner al = new Scanner(System.in);
+		System.out.println("Lutfen secimizi Belirtin!");
+		int secim = 0;
+		System.out.println("Deneme Algoritmasi icin 1'i giriniz.");
+		System.out.println("Not ortalamasi Algoritmasi icin 2'i giriniz.");
+		System.out.println("Not siralamasi Algoritmasi icin 3'ü giriniz.");
+		System.out.println("Ondan büyük mü Algoritmasi icin 4'ü giriniz.");
+		System.out.println("Ýki katini al Algoritmasi icin 5'i giriniz.");
+		System.out.println("Rasgele yas bulma Algoritmasi icin 6'i giriniz.");
+		System.out.println("Tek tek yas bulma Algoritmasi icin 7'i giriniz.");
+		System.out.println("Kare alma Algoritmasi icin 8'i giriniz.");
+		System.out.println("Yüzdeli not hesabi Algoritmasi icin 9'u giriniz.");
+		System.out.println("Bir sayi 10 carpým Algoritmasi icin 10'u giriniz.");
+		System.out.println("Cikmak icin 0 giriniz.");
+
+		secim = al.nextInt();
+		switch (secim) {
+		case 1:
+			algo.deneme();
+			secimMenusuuser();
+			;
+			break;
+		case 2:
+			algo.notOrtalama();
+			secimMenusuuser();
+			;
+			;
+			break;
+		case 3:
+			algo.notSýrala();
+			secimMenusuuser();
+			;
+			break;
+		case 4:
+			algo.ondanBuyukmu();
+			secimMenusuuser();
+			break;
+		case 5:
+			algo.ikikatiniAl();
+			secimMenusuuser();
+			break;
+		case 6:
+			algo.randomYaslarýbul();
+			secimMenusuuser();
+			break;
+		case 7:
+			algo.ayrýayrýRandombul();
+			secimMenusuuser();
+			break;
+		case 8:
+			algo.kareleriniAl();
+			secimMenusuuser();
+			break;
+		case 9:
+			algo.notYuzdeli();
+			secimMenusuuser();
+			break;
+		case 10:
+			algo.birsayýOncarpým();
+			secimMenusuuser();
+			break;
+		case 0:
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+	public void secimMenusuyeniuser() {
+		algoritma algo = new algoritma();
+		Scanner al = new Scanner(System.in);
+		System.out.println("Lutfen secimizi Belirtin!");
+		int secim = 0;
+		System.out.println("Deneme Algoritmasi icin 1'i giriniz.");
+		System.out.println("Not ortalamasi Algoritmasi icin 2'i giriniz.");
+		System.out.println("Not siralamasi Algoritmasi icin 3'ü giriniz.");
+		System.out.println("Cikmak icin 0 giriniz");
+		secim = al.nextInt();
+		switch (secim) {
+		case 1:
+			algo.deneme();
+			secimMenusuyeniuser();
+			break;
+		case 2:
+			algo.notOrtalama();
+			secimMenusuyeniuser();
+			;
+			break;
+		case 3:
+			algo.notSýrala();
+			secimMenusuyeniuser();
+			;
+			break;
+		case 0:
+			break;
+		default:
+			break;
+		}
 	}
 
 	public void deneme() {
