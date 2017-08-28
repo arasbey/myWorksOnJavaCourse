@@ -9,10 +9,29 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JOptionPane;
+
 public class algoritma {
+	static String isim;
 
 	public static void main(String[] args) {
 		algoritma algoritmalar = new algoritma();
+		JOptionPane.showConfirmDialog(null, "Hosgeldiniz devam etmek icin ok'a basin", "Kullanici Algoritma Programý",
+				-1, 2);
+		isim = JOptionPane.showInputDialog(null, "Programa Hosgeldiniz,lütfen adinizi girin:");
+		if (isim.equals("taner")) {
+			JOptionPane.showConfirmDialog(null, "Taner Hocam kullanici algoritma programýna hosgeldiniz.!", "@@@@@@@",
+					-1, 2);
+		}
+
+		else if (isim.equals("")) {
+			isim = "isimsiz";
+
+		} else
+
+			JOptionPane.showConfirmDialog(null,
+					"Sayin " + isim + " kullanici algoritma programina hosgeldiniz!\n  Devam etmek icin OK ' a basin!",
+					"!!!!!!!!!!!!!!!!!!!!!!", -1, 2);
 		algoritma.kullaniciGirisi();
 	}
 
@@ -30,7 +49,7 @@ public class algoritma {
 		String sifre;
 		String giris;
 		int dogrulukkontrol = 0;
-		System.out.println("------------ Hosgeldiniz -------------");
+		System.out.println("------------ Hosgeldiniz Sayin " + isim + " !-------------");
 		System.out.println("Lutfen Kullanici adinizi giriniz.Yoksa,olusturmak icin yeni yazin");
 		giris = al.nextLine();
 		System.out.println("Lutfen sifrenizi giriniz.");
